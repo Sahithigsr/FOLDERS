@@ -1,0 +1,35 @@
+Angular
+
+API-Application Programming Interface
+CLI-Command Line Interface:To create new projects
+
+--Creation
+->ng new "proj-name"
+->ng g c login //for components
+-> ng serve
+
+
+......................TYPE SCRIPT...................
+-superset of js,but here extra features like has oops classes properties,compile-time errors
+-browser doesn't understand ts, so automatically transpiles into js
+-for running-> tsc main.ts
+-if u write var in a block, its valid outside of it also not with let...even though its shows error, js file will be running fine with node main.js
+
+
+............ANGULAR..............
+String Interpolation..{{function() }}
+-we use `back tick for multiple lines
+-we use directives for manipulate dom elements
+ex:*ngFor="let course of courses"
+->DISPLAYING DATA AND HANDLING EVENTS
+-1.interpolation:<h2>{{title}}</h2><img src="{{imageUrl}}"/> 
+-2.property binding:<img [src]="imageUrl" />
+-Event bubbles UP the DOM Tree
+-3.TwoWayBinding
+-4.Pipes:To format Data
+Ex: | uppercase |lowercase ans will be lower
+|number:'1.2-2' (for decimal pipe)
+-5.Custom Pipes:
+ex:to summarize text
+implements pipetransform
+

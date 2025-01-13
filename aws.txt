@@ -1,0 +1,19 @@
+aws
+
+id 664418954619
+
+lwgnJL7{
+
+Console sign-in URL
+
+https://664418954619.signin.aws.amazon.com/console
+User name
+
+sahithi_admin
+Console password
+
+lwgnJL7{
+Hide
+
+
+***********rapidapi**

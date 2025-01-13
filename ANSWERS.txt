@@ -1,0 +1,606 @@
+.................w4.....................
+1. sum of fun
+public class Solution {
+    public static int tripleXorSum(int N,int[] AR){
+        long sum = 0;
+        long MOD = 1000000007;
+        long[] setBits = new long[32];
+        long[] twoPowers = new long[32];
+ 
+        twoPowers[0] = 1;
+        for (int i = 1; i < 32; i++) {
+            twoPowers[i] = (2 * twoPowers[i-1]) % MOD;
+        }
+ 
+        for (int i : AR) {
+            int temp = i;
+            for (int j = 0; j < 32; j++) {
+                if (temp%2 == 1) {
+                    setBits[j]++;
+                }
+                temp = temp/2;
+            }
+        }
+ 
+        for (int i = 0; i < 32; i++) {
+            long ones = setBits[i];
+            long zeroes = N - ones;
+            long ones3 = ((ones * (ones-1) * (ones - 2))/6) % MOD;
+            long ones1 = ((ones * zeroes * (zeroes-1))/2) % MOD;
+ 
+            if (ones >= 3 && zeroes >= 2) {
+                sum = (sum + (twoPowers[i] * (ones3 + ones1))) % MOD;
+            } else if (zeroes < 2 && ones >= 3) {
+                sum = (sum + (twoPowers[i] * ones3)) % MOD;
+            } else if (ones < 3 && ones >= 1) {
+                sum = (sum + (twoPowers[i] * ones1)) % MOD;
+            }
+        }
+ 
+        return (int) (sum % MOD);
+    }
+
+2.MIX THEM
+     public static int validSubsequence(int N,int[] SIZES,int Total,int[] AR,int[] OPTIMUM){
+        int result=0;
+        List<List<Integer>> parkPools = new LinkedList<>();
+        int poolOver=0;
+        List<Integer>x=new ArrayList<>();
+        for(int size:SIZES){
+            List<Integer>temp=new LinkedList<>();
+            for(int i=0;i<size;i++){
+                temp.add(AR[poolOver+i]);
+            }
+            parkPools.add(temp);
+            poolOver+=size;
+        }
+        for(int i=0;i<N;i++){
+            List<Integer>currentPark = parkPools.get(i);
+            int size=SIZES[i];
+            int optimumTemp=OPTIMUM[i];
+            Collections.sort(currentPark);
+            int min=currentPark.get(0);
+            int max=currentPark.get(size-1);
+            if(currentPark.contains(optimumTemp)) x.add(1);
+            else if(!((max<optimumTemp)||(min>optimumTemp))) x.add(2);
+        }
+        Map<Integer,Integer> countMap=new HashMap<>();
+        for(int j=0;j<x.size();j++){
+            countMap.put(x.get(j),countMap.getOrDefault(x.get(j),0)+1);
+        }
+        for(int count:countMap.values()){
+            result+=count/2*2;
+        }
+        return result;
+        
+    }
+
+    public static void main(String[] args){
+        Scanner scan = new Scanner(System.in);
+        int N;
+        N=scan.nextInt();
+        int[] SIZES = new int[N];
+        for(int j=0;j<N;j++){
+            SIZES[j]=scan.nextInt();
+        }
+        int Tot;
+        Tot=scan.nextInt();
+        int[] AR = new int[Tot];
+        for(int j=0;j<Tot;j++){
+            AR[j]=scan.nextInt();
+        }
+        int[] OPTIMUM = new int[N];
+        for(int j=0;j<N;j++){
+            OPTIMUM[j]=scan.nextInt();
+        }
+        int result;
+        result = validSubsequence(N,SIZES,Tot,AR,OPTIMUM);
+        System.out.print(result);
+        return ;
+    }
+}
+
+3.operations on queue
+public static int opQueue(int n, List<List<Integer>>v) {
+        // Write your code here
+         Queue<Integer> a = new LinkedList<>();
+        Queue<Integer> b = new LinkedList<>();
+        for(int i=0;i<n;i++){
+            List<Integer> x=v.get(i);
+            if(x.get(0)==1)a.add(x.get(1));
+            else{
+                Integer y=a.poll();
+                if(x.get(1)==1)a.add(y);
+                else b.add(y);
+            }
+        }
+        long p=1,q=1;
+        while(!a.isEmpty()){
+            p=(p*a.poll()) % 1000000007;
+        }
+        while (!b.isEmpty()) {
+            q = (q*b.poll()) % 1000000007;
+        }
+        return (int)(p+q)%1000000007;
+        
+    }
+4. LAST VALUE
+
+public static int func(int a,int b){
+        if(b==0)return a;
+        return func(b,a%b);
+    }
+    public static int finalValue(int n, List<Integer> v) {
+        // Write your code here
+        int a=v.get(0);
+        for(int i=1;i<n;i++){
+            a=func(a,v.get(i));
+            if(a==1)return 1;
+        }
+        return a;
+    }
+
+5. SAME FREQUENCY
+public class Solution {
+    public static int minimumDeletion(int[] array){
+        Map<Integer,Integer> freqMap=new HashMap<>();
+        for(int num:array){
+            freqMap.put(num,freqMap.getOrDefault(num,0)+1);
+ 
+        }
+        Map<Integer,Integer> countMap=new HashMap<>();
+        for(int count:freqMap.values()){
+            countMap.put(count,countMap.getOrDefault(count,0)+1);
+        }
+        int minimumDeletion=Integer.MAX_VALUE;
+        int totalElements=array.length;
+        for(Map.Entry<Integer,Integer> entry:countMap.entrySet()){
+            int freq=entry.getKey();
+            int noOfEltsWithFreq=entry.getValue();
+            int deletions=0;
+            for(Map.Entry<Integer,Integer>innerEntry:countMap.entrySet()){
+                int cfreq=innerEntry.getKey();
+                int ccount=innerEntry.getValue();
+                if(cfreq<freq){
+                    deletions+=(cfreq*ccount);
+                }
+                else if(cfreq>freq){
+                    deletions+=(cfreq-freq)*ccount;
+                }
+            }
+           minimumDeletion=Math.min(minimumDeletion,deletions); 
+        }
+        return minimumDeletion;
+    }
+
+6. LOST EXPERIMENT
+
+public static int lostExperiment(int N,int[] A,int[] B){
+        long maxi=B[0];
+        if(A[0]!=1){
+            long res=A[0]-1;
+             maxi=Math.max(maxi,B[0]+res);
+        }
+        for(int i=1;i<A.length;i++) {
+            maxi=Math.max(B[i],maxi); 
+            if(B[i]>B[i-1]){
+            long diff=B[i]-B[i-1]; 
+            if(A[i-1]+diff>A[i]){ 
+                return -1;
+            }
+            long res=A[i-1]+diff;
+            long diff2=A[i]-res-1; 
+            long count; 
+            if(diff2%2==1){ 
+                count=(diff2/2)+1; 
+                            
+            }else{
+                count=(diff2/2);
+            }
+            maxi=Math.max(maxi, B[i]+count);
+     }
+     else if(B[i]<B[i-1]){
+          long diff=B[i-1]-B[i];
+           if(A[i-1]+diff>A[i]){ 
+               return -1;
+            } 
+        long res=A[i-1]+diff;
+        long diff2=A[i]-res-1;
+        long count;
+        if(diff2%2==1){
+            count=(diff2/2)+1;
+        }else{
+            count=(diff2/2);
+        }
+     maxi=Math.max(maxi, B[i-1]+count);
+    }else{
+
+    long diff=A[i]-A[i-1]-1;
+
+    long count;
+
+    if(diff%2==1){
+
+        count=(diff/2)+1;
+
+    }else{
+
+        count=(diff/2);
+
+    }
+
+    maxi=Math.max(maxi, B[i]+count);
+    
+    }
+
+}
+
+if(A[A.length-1]!=N) {
+
+    long diff=N-A[A.length-1];
+
+    maxi=Math.max(maxi, B[A.length-1]+diff);
+
+}
+ return (int)maxi;
+    }
+ 
+
+7. TOWER OF HANA
+public class Solution {
+    public static int towerOfHana(int N,int M){
+        if(M==0){
+            return 2*N;
+        }
+        if(M>=N || (N==0)){
+            return (3*M);
+        }
+        int cou6=M/2;
+        if(((2*N)+(2*cou6))<(3*M)){
+            return (3*M);
+        }
+        int mini=N/3;
+        int count2=(2*N);
+        int count3=(3*(M+N/3));
+ 
+        if(count2>=count3){
+            return count2;
+        }
+ 
+ 
+        int ans=count3;
+        while(mini>0 && count3>=count2){
+            count2+=2;
+            count3-=3;
+            if(count2%6==0 && count3-count2>=0){
+                count2+=2;
+            }
+            int res;
+            if(count2>count3){
+                if(ans>count2){
+                ans=count2;
+            }
+            }else{
+                if(ans>count3){
+                ans=count3;
+            }
+            }
+            mini--;
+        }
+        return ans;
+    }
+
+    public static void main(String[] args){
+        Scanner scan = new Scanner(System.in);
+        int N;
+        N=scan.nextInt();
+        int M;
+        M=scan.nextInt();
+        int result;
+        result = towerOfHana(N,M);
+        System.out.print(result);
+        return ;
+    }
+}
+
+......................W2....................
+1.openhouse
+public static int openHouse(int M,int[] T){
+        PriorityQueue<Integer>pq=new PriorityQueue<>();
+        for(int i=0;i<T.length;i++){
+            pq.add(T[i]);
+        }
+        int maxi=Integer.MIN_VALUE;
+        int count=0;
+        int []arr=new int[T.length];
+        int k=0;
+        while(!pq.isEmpty()){
+            int res=pq.poll();
+            arr[k]=res;
+            k++;
+        }
+        
+
+        int i=0,j=0,N=T.length;
+        while(i<N && j<N){
+            while(arr[j]-arr[i]+1>M){
+                i++;
+            }
+            if (arr[j] - arr[i] + 1<= M) {
+                maxi = Math.max(j - i + 1, maxi);
+            }
+
+            j++;
+        }
+        return N-maxi;
+    }
+
+
+
+2.3-divisible
+public class Solution {
+    public static int minOperations(int N) {
+
+        int count=0;
+        while(N>1){
+            if(N==0){
+                count++;
+                N=N+1;
+            }else if(N==2){
+                count++;
+                N=N-1;
+            }else if(N%3==0){
+                count++;
+                N=N/3;
+            }else if(N%3==1){
+                count++;
+                N=N-1;
+            }else if(N%3==2){
+                count++;
+                N=N+1;
+            }
+        }
+        return count;
+        // Write your code here
+    
+    }
+
+4.One Large Group
+
+public static int largestGroup(int N,int M,int[] AR){
+        int[] remainderCount = new int[M];
+ 
+        for(int ele : AR) {
+            int remainder = ele % M;
+            remainderCount[remainder]++; 
+        }
+ 
+        int cnt = 0;
+ 
+        if(remainderCount[0] > 0) {
+            cnt++;
+        }
+ 
+        for(int r=1;r <= M/2; r++){
+            if(r == M-r){
+                if(remainderCount[r] > 0){
+                    cnt++;
+                }
+            } else {
+                cnt += Math.max(remainderCount[r], remainderCount[M-r]);
+            }
+        }
+        return cnt;
+    }
+
+5.REDISTRIBUTION
+  public static int redistribution(int[] C){
+        int seconds = 0;
+        int mean = (Arrays.stream(C).sum()) / C.length;
+        int remainder = (Arrays.stream(C).sum()) % C.length;
+        int size  = C.length;
+
+        Arrays.sort(C);
+        
+        if (remainder == 0) {
+            for (int i : C) {
+                seconds += (i > mean ? (i-mean) : (mean-i));
+            }
+        } else {
+            for (int i = 0; i < (size - remainder); i++) {
+                seconds += C[i] > mean ? (C[i] - mean) : (mean - C[i]);
+            }
+            for (int i = (size - remainder); i < size; i++) {
+                seconds += C[i] > (mean+1) ? (C[i] - mean - 1) : (mean + 1 - C[i]);
+            }
+        }
+
+        return seconds/2;
+    }
+
+
+
+
+
+6.make groups
+public static int numberOfGroups(int N,String S){
+        int MOD = 1000000007;
+        HashMap<Character, Integer> charFreq = new HashMap<>();
+        long total = 1;
+
+        for (char c : S.toCharArray()) {
+            charFreq.put(c, charFreq.getOrDefault(c, 0) + 1);
+        }
+        int size = charFreq.size();
+        for (int i : charFreq.values()) {
+            total = (total * (i+1)) % MOD;
+        }
+
+        return (int) (total - 1);
+    }
+
+
+
+
+.......................w6............
+1.smart santa
+
+ public static int smart_santa(int N,int[] A,int[] B){
+         Arrays.sort(A);
+        Arrays.sort(B);
+        int i=0,j=0;
+        int count=0;
+        while(i<N && j<N){
+            if(A[i]<=B[j]){
+                i++;
+                j++;
+                count++;
+            }else{
+                j++;
+            }
+        }
+        return N-count;
+    }
+
+2. farthest pairs
+ public static int farthestPairs(int N, List<Integer> A) {
+        int []mini=new int[N];
+        mini[0]=A.get(0);
+        for(int i=1;i<N;i++){
+            mini[i]=Math.min(mini[i-1],A.get(i));
+        }
+        int []maxi=new int[N];
+        maxi[N-1]=A.get(N-1);
+        for(int i=N-2;i>=0;i--){
+            maxi[i]=Math.max(maxi[i+1],A.get(i));
+        }
+        int i=0,j=0,maxdist=-1;
+        while(i<N && j<N){
+            if(mini[i]<maxi[j]){
+                maxdist=Math.max(maxdist,j-i);
+                j++;
+            }else{
+                i++;
+            }
+        }
+        return maxdist;
+
+4.is sum greater than xor?
+
+public static int sumGreaterXor(int[] A){
+        long ans = 0;
+        long MOD = 1000000007;
+        long[] setBits = new long[32];
+        long[] twoPowers = new long[32];
+
+        twoPowers[0] = 1;
+        for (int i = 1; i < 32; i++) {
+            twoPowers[i] = (2 * twoPowers[i - 1]) % MOD;
+        }
+
+        for (int i : A) {
+            int temp = i;
+            for (int j = 0; j < 32; j++) {
+                if (temp % 2 == 1) {
+                    setBits[j]++;
+                }
+                temp = temp / 2;
+            }
+        }
+
+        for (int i = 0; i < 32; i++) {
+            long ones = setBits[i];
+            long ones2 = ((ones * (ones - 1)) / 2) % MOD;
+
+            if (ones >= 2) {
+                ans = (ans + 4 * (twoPowers[i] * ones2)) % MOD;
+            }
+        }
+        for (int i : A) {
+            ans = (ans + 2 * i) % MOD;
+        }
+        return (int) (ans % MOD);
+    }
+
+5.XOR Tree
+
+   public static int computexor(List<Integer> arr,int[] lazy,int node){
+        if(node>=arr.size()){
+            return 0;
+        }
+        arr.set(node,arr.get(node)+lazy[node]);
+        if(2*node+1<arr.size()) lazy[2*node+1]+=lazy[node];
+        if(2*node+2<arr.size()) lazy[2*node+2]+=lazy[node];
+
+        lazy[node]=0;
+        int leftxor=computexor(arr,lazy,2*node+1);
+        int rightxor=computexor(arr,lazy,2*node+2);
+        return arr.get(node)^leftxor^rightxor;
+    }
+    public static int getXorValue(int N, List<Integer> Arr, int M, List<Integer> X, List<Integer> V) {
+        // Write your code here
+        int[] lazy=new int[N];
+        for(int i=0;i<M;i++){
+            int node=X.get(i);
+            int increment=V.get(i);
+            lazy[node]+=increment;
+        }
+        int resultXor=computexor(Arr,lazy,0);
+        return resultXor;
+    
+    }
+...................w7...............
+2.FIND THE VALUE
+static int mod=1000000007;
+    static int gcd(int a, int b){
+        if(a==0){
+            return b;
+        }
+        return gcd(b%a,a);
+    }
+    public static int calculateCount(int N, List<Integer> Arr) {
+        // Write your code here
+        int g=Arr.get(0);
+        long ans=1;
+        HashSet<Integer>divisors=new HashSet<Integer>();
+        for(int i=1;i<N;i++){
+            g=gcd(Arr.get(i),g);
+        }
+        for(int i=1;i*i<=g;i++){
+            if(g%i==0){
+                ans=(ans*i)%mod;
+                if(g/i!=i){
+                    ans=(ans*(g/i))%mod;
+                }
+            }
+        }
+        return (int)(ans%mod);
+
+4.PRIME PROBLEM
+ public static int querReports(int N,int[] AR,int Q,int[] L,int[] R){
+         int n=100000;
+        boolean[] isprime=new boolean[n+1];
+        Arrays.fill(isprime,true);
+        isprime[0]=isprime[1]=false;
+        for(int p=2;p*p<=n;p++){
+            if(isprime[p]){
+                for(int i=p*p;i<=n;i+=p){
+                    isprime[i]=false;
+                }
+            }
+        }
+        long ans=0;
+        for(int i=0;i<Q;i++){
+            int count=0;
+            for(int j=L[i];j<=R[i];j++){
+                if(isprime[AR[j-1]]){
+                    count++;
+                }
+            }
+            // System.out.println(count);
+            ans+=count;
+        }
+        return (int)ans;
+    }
+
+ 

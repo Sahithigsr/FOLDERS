@@ -1,0 +1,57 @@
+uml
+class-diagrams
+usercases
+
+-chatuml website for uml 
+
+
+
+** first when u open have a static page which includes everything we do!
+quotes
+-Transparency is our policy. Learn how it impacts everything we do
+-Make smarter investing decisions with Morningstar Investor
+-Investors trust us because we put investors first
+- invest with confidence
+-Find your next best investment
+
+**apply filters option 
+check https://www.morningstar.com/mm/investor/learn
+
+**gainers loosers
+
+**news and notification alert
+
+**user-profile
+-watchlist
+
+
+--API KEY
+SW8EIO5OTEE8AFAX.
+
+--app passwordS
+ctnl lxie wpgk zcvj
+
+
+
+
+TIPS:
+-start/introduce with the problem
+-IN TODAYS challenges many people are investing stocks without knowing basics,so e wnat to make easier or beginners to learn we came up with a solution of this app
+-tell about features
+-y using microservices,jwt?orany technologies
+-rest template is imperative,but in feign clinet its declarative (only what has to be done)
+-actuator means monitoring tool
+-ppt start
+-..
+-add technical terms
+-Add To favs,remove from favs...buy &sell stocks according to quantity
+-basic workflow frontend api server
+-followed references
+-future scopes
+
+
+
+
+
+
+

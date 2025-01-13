@@ -1,0 +1,1413 @@
+............................3/9/24.........................
+FILE HANDLING:
+
+Byte stream: reads and writes 1 byte at a time(byte or 8bits:-128 to 127)
+character stream:  reads and writes 1 char(2 bytes) at a time
+NIO:
+random access file:both reading and writing 
+
+serialisation:converting obj into file
+HW:Complete serialozation 
+hW:gave q in afternoon
+
+........................4/9/24................
+
+SonarQube-for code quality check,but not installed in java21
+
+Regex,patterns..chcek in javatpoint
+
+JAVA 11 TO JAVA 17
+1.Sealed:if u want to give permission of a class to only parcticular class!(for security purpose)
+sealed..permits
+non-sealed or final...extends
+2.RECORDS
+all setters getters constructors will not be required if u write record instead of class
+all things are final,which are immutable(u cnnot update tranier as setter is fixed)
+public record Trainee (int id, String name, LocalDate dateJoined)
+record cannot extend anything but impelments is possible
+a record can contain other record
+3.SWITCH
+write yield for multiline statements inside switch instead of return
+HW:2 qs on emplyee heriachy advanced! 
+
+............................5/9/24.......................
+4.GARBAGE COLLECTION
+unused objects in heap memory will be in GC
+JVM automatcically does GC but if u want write System.gc;(which is a low priority one && also add finalize method in main)
+
+...........................6/9/24........ DB.........................
+DATABASE VS FILE: organized structure in db and retrieving also in db
+RDBMS(relational):my sql,sql server,oracle,postgres
+No sql(not just sql)(no need to create tables,horizanatal scaling) ex:mangodb
+
+SQL
+
+types of commands
+DDL:Data Definition Language
+--create,alter,drop,truncate
+DML:Data Manipulation Language
+--insert update delete
+DQL:Data Query Language
+--select
+DCL:Data Control Language
+--grant,revoke
+TCL:Transaction Control Language
+--commit,rollback,savepoint
+fathimas screenshots
+
+
+............................9/9/24.......................
+char is fixed size, varchar is of variable length(remaining will be left)
+--primary key
+--not null
+--unique
+--default
+
+--joins
+1. 
+
+...........10/9/24..........
+
+
+1.for number of chars of a column of type varchar use ..........> char_length(column_name)
+2.If a user does not have a unique ID replace just show null..if a q is showing like this, use left or right join
+
+
+...............13/9/24...........
+JDBC
+try
+{
+if(connection!=null)return c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+changes
+create database ust_db
+date yy-mm-dd
+maven:postgresql latest depency in pom.xml
+change url,password..5432
+
+
+
+
+
+...........17/9/24......
+
+SOLID principle
+
+1.Single responsibility principle
+-dont combine many
+
+2.open-close principle
+-open for extension and close for modification
+check design patterns->opencloseEx file for clarity(just extends ex)
+
+3.liskov substitution principle
+sub class should substitute ur parent class anytime
+
+4.interface segregation principle
+create and implement multiple interfaces if need
+
+5.dependency inversion principle
+declare obj as list l=new arraylist();
+
+DESIGN PATTERNS
+
+3 types by Gang of Four:
+1.Creational
+-singleton
+not creating new obj everytime,latest change will be updated to all
+private constructor
+and public method to get new obj
+-builder
+pizza example!
+
+2.Structural..2 classes
+-adapter example
+-facade example(rest api between frontend and backend)
+3.Behavioral...obj communication
+-
+
+
+............18/9/24..........
+git
+agile sdlc
+java
+java features 8,11,17
+junit
+dbms sql
+jdbc
+design patterns
+
+
+
+
+Jupiter,core Mockito
+engine api junit
+
+
+
+
+
+
+
+
+
+.............................19/9/24..........
+module 2:
+
+html-provides structure
+css-styling
+bootstrap-responsiveness
+js-provides functionality
+angular-single layer application(framework where react is library)
+
+
+html
+check comments once in hello.html
+
+key value pair
+property only
+
+inline
+internal for multiple impl
+external
+
+
+
+
+
+
+
+
+
+flex-direction: column-reverse;
+flex-wrap: wrap-reverse;
+align-content: space-between;
+justify-content: center;
+
+
+
+
+sql server
+
+3 java
+-collection framework
+-oops
+-stream api java 8,11
+
+2-3 sql
+
+10mcqs
+
+
+
+
+1.
+.map(i->i.trim())
+                        .filter(i->!i.isEmpty())
+                .map(i->i.toUpperCase())
+
+for blank inputs,trim make sure they are not empty and convert to uppercase if needed
+
+2. person search
+.filter(i->i.equalsIgnoreCase(nameToSearch)).findFirst().map(i->"Person found").orElse("Person not found");
+
+
+3.for string,int map and getting max int based string
+
+personMap.entrySet().stream()
+                .max(Map.Entry.comparingByValue()).map(Map.Entry::getKey).get();
+
+
+4. conversion to string
+  int res= firstNumber/secondNumber;
+        return String.valueOf(res);
+
+5. for checking if all are characters
+boolean c= inputList.stream().allMatch(i->i.chars().allMatch(Character::isLetter));
+
+
+
+1. 
+select class from courses group by class having count(class)>=5 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..............23/9/24..........
+Bootstramp
+check website for understanding
+
+
+
+
+
+
+........................24/9/24...................
+JS
+
+frontend-react js angular
+backend-node js,express
+android/ios-react native
+ai/ml-tensorflow js
+
+js version:ekmas6 ES6
+
+ls or dir: for files 
+pwd:for getting link 
+
+--js can be written anywhere..in head,in body,outside,anywhere
+
+let:block scope(inside if block only can be used,outside cant be used)
+
+
+callback
+promise
+async
+await
+
+api call with js'
+testing js
+-mocha
+-chai
+
+<%@import 
+class view
+{
+<%!
+declaration
+%>
+
+service() //body
+{
+<%
+operations
+%>
+<h2>..out statement should be written with =
+}
+
+<%Trainee trainee=(Trainee)request.getAttribute("trainee");%>
+
+<h2>Hello <%=trainee.getName() %>!</h2>
+
+
+ <!--<%  Trainee trainee = (Trainee) request.getAttribute("trainee");    %>
+          <h2> Hello <%= trainee.getName() %>!</h2>-->
+
+<button class='btn btn-danger' type="button">Delete</button>
+
+ <!--out.println("<tr><td>" + i.getId() + "</td><td>" + i.getName() + "</td><td>" + i.getLocation() + "</td><td>" + i.getJoinedDate() + "</td><td>"+<button class='btn btn-danger' type="button">Delete</button>+"</td></tr>");-->
+
+
+out.println("<table class='table table-striped'><tr><th>ID</th><th>Name</th><th>Location</th><th>Joined Date</th><th></th></tr>");
+        for(Trainee i : trainees){
+            out.println("<tr><td>" + i.getId() + "</td><td>" + i.getName() + "</td><td>" + i.getLocation() + "</td><td>" + i.getJoinedDate() + "</td><td>"+<button class='btn btn-danger' type="button">Delete</button>+"</td></tr>");
+
+        }
+        out.println("</table>");
+        %>
+
+.........26/9/24..........
+callback
+--passing a function inside function
+promise
+--resolved or rejected
+api call is asynchr.
+after resolving u can write call back
+
+
+await...
+only if line 9 completes goes to line 10
+
+website is for human consumption,well organized
+but api(application programming interface) is for coordination between 2 applications.. ex: jdbc(for 2 data bases)
+
+
+
+..........27/9/24........
+typescript
+tuple? fixed size with diff data types
+array?
+Enum? for fixed set of sizes of tshirt..S M L
+ //only single constructor allowed in class
+ private:cannot be inherited
+cannot be used from outside but can be inherited:protected
+
+codevars
+npm install name
+cd name
+..?
+ng g c play// for generating new compeneny
+
+
+bootsramp.min.css in style of json
+
+
+angular is all typescript so whatever we write in html is conveted to typescript!
+
+dont use let,function keyword in a class
+
+
+....28/9/24.....
+design "task" website
+
+
+
+
+........30/9/24...........
+creating older approach!
+ng new hello-ust-angular-old --standalone=false
+
+
+--created "task" website using angular
+--hw:to create product cart problem
+
+
+
+
+ .........1/10/24........
+unit testing for javascript
+
+npm init
+npm i --save-dev @types/jest
+
+
+........SPRING...........
+-a framework for building java applics
+
+1. Spring Core Dependency Injection(v.imp)
+2. Spring web MVC
+3. Spring REST
+4. Spring Data
+5. Spring Cloud
+6. Spring Security
+
+version: Spring framework-6,spring boot-3
+
+--creation of an app:open maven type and add spring context dependency
+
+--IOC(inversion of control) container: all objects(beans here) will be stored in this container
+-in a singleton fashion
+
+
+.....................3/10/24.........
+--@Autowired=wherever bean private object is created
+--@qualifier("name"):for multiple beans use @bean("name") 
+--@component: same as bean, write it in ur class file,so that it will create beans
+--@ComponentScan(path)
+--@Primary(" "):for priority
+
+create resources for properties setting
+
+
+--use initializing bean if u need to give proper inputs before itself
+implements  InitializingBean
+public void afterPropertiesSet() throws Exception {
+
+        products=new ArrayList<>();
+
+    }
+
+
+--@Scope("Singleton or prototype")
+-singleton means wherether u use beans or not they will be created once in this container
+-prototype:created only when u want to use & multiple objs can be created
+-singleton lazy:created only when u want to use & only once
+
+.................4/10/24...............
+did notification sys prob
+
+
+.................5/10/24.....................
+
+.............SPRING MVC..........SPRING BOOT............
+
+-has embedded tomcat server
+go to https://start.spring.io/ and add dependency as spring web and fill details and then generate u will get folder. open this folder in IntelliJ and use
+-after opening remove tomcat depencdency from pom.xml
+
+mvc:model view controller
+
+in applin props:u can add server port also
+@GetMapping("/hello") for finding that path
+-html or jsp files in webapp are called views
+-add jasper dependency for jsp file to work
+
+-for adding time in model m
+String time= LocalTime.now().toString();
+ m.addAttribute("time",time);
+
+
+--how its working?
+request from client<front controller<handler mapping<returns app controller to front controller<now request will go to app controller<now app controller returns a view: hello.jsp<fc to view resolver
+
+<div class="card" style="width: 15rem; border:2px solid red; ">
+<div class="card-content">
+<h3 class="card-title" style="color:blue;">Name:${name}</h3>
+<h3 class="card-text">ID:${id}</h3>
+<h3 class="card-text">Location:${location}</h3>
+</div>
+</div>
+
+name: ' ', id: ' ', location: ' ' }];
+
+-add Jakarta
+<%@
+
+// if u want initialization at begin
+ @PostConstruct
+ void init()
+     {
+         traineeList=new ArrayList<>();
+         Trainee t1=new Trainee(1,"gsr","hyd");
+         Trainee t2=new Trainee(2,"ksr","nlg");
+         traineeList.add(t1);
+         traineeList.add(t2);
+
+     }
+
+....................7/10/24.....................
+
+...REST API....
+mvc returns a view..............@getmapping(task)
+REST API returns resources..............@getmapping(nouns)...use restcontroller annotation
+
+springdoc-openapi-starter-webmvc-ui add this dependency and open 
+get :for displaying all or getting by id/name
+post: to save trainee
+put: to update trainee
+delete: to delete trainee
+
+
+--responses::
+2 fine
+201 created
+202 accepted
+204 no content
+
+4 client side error
+404 not found
+401 noy authorized
+405 method not allowed
+
+5 internal server error
+
+
+
+getters setters
+use traineedto only 
+.getId()
+
+
+.......................8/10/24......................
+
+DATABASE CONNECTION-JPA(JAVA PERSISTANCE API)
+-ORM (OBJECT RELATIONAL MAPPING)
+-Hibernate-ORM FRAMEWORK
+
+
+spring web,postgres,spring data jpa,lombok are dependencies
+
+
+
+extends JpaRepository<Trainee,Integer(this is type of ur primary key>
+save method: upserd(add if not there or else update)
+
+--connection of frontrnd with backend
+@CrossOrigin(origins = {"http://127.0.0.1:5500"})
+
+baseurl as 8500
+
+
+.....9/10/24.....
+to create project in trainee
+create project model and write entity data id and all
+then write below code in trainee
+@OneToOne(cascade = CascadeType.ALL)
+    private Project project;
+
+
+
+ <div class="card">
+        <h2>Add Project</h2>
+        <input type="number" id="addpId" placeholder="Project Id">
+        <input type="text" id="addpName" placeholder="Project Name">
+        <select id="addpStatus" name="addpStatus">
+            <option value="">choose Status</option>
+            <option value="NOT_STARTED">NOT_STARTED</option>
+            <option value="ONGOING">ONGOING</option>
+            <option value="COMPLETED">COMPLETED</option>
+        </select>
+
+..........10/10/24..........
+writing exceptions 
+
+--ZERO CODE REST API BUILDING
+add extra depency rest repositoties dependency for trainee-rest-api-v2 project from start.spring.io
+and dont forget to add <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.6.0</version>
+		</dependency> 
+just create model and repository and add in app.properties 
+u will automatically get all in ur localhost swagger
+
+--HATEOAS u will get extra info also
+
+put vs patch(can update single entity also)
+
+hw:::create same for task
+implement extra methods in repo and service(imp)
+List<Task> findByStatus(Status status);
+    List<Task> findByDueDateBefore(LocalDate today);
+    List<Task> findAllByOrderByDueDateAsc();
+
+.........11/10/24..........
+combining front end and backend of task 
+also see hard delete vs soft delete
+
+points:
+u can write query like 
+@Query("from Trainee where name=:name")
+or @namedQuery in trainee model
+
+..............14/10/24...............
+TESTING REST API
+EXAMPLE:trainee-data-jpa file
+-add h2 database engine dependency first
+-but with h2 if u relaunch all data will go,so dont use for production use for testing only
+
+.........15/10/24............
+
+MONGODB(case sensitive)
+add in path and also in cmd run mongod and mongosh
+db.createCollection('trainee')
+
+--create user
+db.createUser({
+  user: "Sahithi",
+  pwd: "password",
+  roles: [
+    {
+      role: "readWrite",
+      db: "trainee_db"
+    }
+  ]
+})
+--create new spring proj
+-use @document
+if u want to not add id and take hexadec so make it biginteger in proj..otherwise simply pass id
+
+.........16/0/24..........
+.....SPRING SECURITY...
+-add dependency:
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+username:user,password is in terminal
+-AUTHENTICATION: who r u?
+-AUTHORIZATION: Are u eligible?
+1.
+--using postman: send link first>choose basic auth>enter user and password>u will get
+--own username and password?
+create securityconfig File
+2.
+@PreAuthorize("hasRole('ADMIN')")
+    public Trainee saveTrainee(Trainee trainee) // u gave access to save only for admin
+@PreAuthorize("hasRole('USER')")
+    public List<Trainee> getAllTrainees() 
+-also modify config filw ith new method for posting any data as it requires csrf
+and also add @EnableMethodSecurity in config file
+
+.............17/10/24.......
+try same spring security in vm with my sql server
+
+
+...........21/10/24................
+CLOUD
+-AWS account
+dont change location
+open iam>users>give username and autogen paassword>create group>tick adimistratoraccess>create user>download csv file for password details
+
+CLOUD COMPUTING
+- on demand resource sharing
+- AWS, Azure from Micrososft, GCP from google::provides services
+- region(iam is global,but most are region specific) and avalibilty zone
+- IP address:if u connect ur device to internet it has an IP address
+2 types: IPV4 IPV6
+-DNS Domain Name Server : translation of Ip addresses (if u type www.facebook it will redirect) i.e link will be translated to ip address by dns
+- SUBNET:group of ip Addresses
+-VPC: Virtal Private Cloud: firewall b/w internet and resource to aws
+u can have under 1 iam 5 vpcs..under vpc u can multiple subnets I.E vpc>subnets>ip addresses
+- security Group
+1.Inbound Rule :acceesing to VM
+2.Outbound Rule: accessing from VM (anything)
+-cloud types
+1.private
+2.public:aws azure gcp
+3.hybrid
+-cloud offers 3 types of services
+1.IaaS Infrastructure as a Service Ex: EC2-AWS, VM-Azure, CE-GCP
+2.PaaS Platform as a Service Ex: Elastic Beanstalk. Google App Engine, Heroku, Microsoft Azure App Service.
+3.SaaS Software as a Service Ex: Gmail,Salesforce,. Google Workspace, Microsoft 365, Salesforce
+
+EC2 we can create VM
+--browse EC2 service>launch an instance>amozon linux>2023 free tier eligible>t2micro>create key pair>RSA, .pem >security group>free teir all>launch instance
+--for creating security group>open vpc>security groups>modify inbound rule ssh (ipv4 version) anywhere ip
+--after launching> for connecting>copy public dns>connect>copy line of ssh and paste in cd downloads>enter yes> u will get bird symbol and amazon linux 2023>done!
+--ls > pwd> sudo yum install git -y
+
+open instance>instance state>stop it
+
+..importing proj to cloud...
+first generate jar files in local>type command scp -i "key-file-name" file-to-upload ec2-user@public-ip-address:/home/ec2-user
+
+install java :  sudo yum install  java-21-amazon-corretto-headless
+install maven: sudo yum install maven -y
+
+clone the repo:
+run following maven command to build the jar file
+mvn clean install
+make sure to be in the proj folder
+
+go to target folder
+run java -jar [file-name.jar]
+add inbound rule for custom TCP from anywhere on the port ur app is running
+
+......23/10/24.......
+**Elastic Beanstalk**
+-no need to install all this java maven, itself will provide a platform which will automates 
+-browsw elastic beanstalk service
+-open an application
+-domain:java
+-platform:java
+-correto 21 2023
+>Create and use new service role>EC2 instance profile ? go to services >go to iam>create policy with ec2  and create role with ec2(1 service involved with ec2 therefore create policy)(role will have multiple policies) >roles>aws service> select ec2 usecase> add permisions as awselasticbeanstalkwebteir required and docker>select all instance subnets>next>next>submit
+-ur port should run in 5000 (v.imp) change in resources
+-after submitting wait then click upload and deploy and upload jar file 
+
+Required:
+ 
+AWSElasticBeanstalkWebTier
+
+Optional:
+ 
+AWSElasticBeanstalkEnhancedHealth
+AWSElasticBeanstalkMulticontainerDocker
+AWSElasticBeanstalkRoleRDS
+AWSElasticBeanstalkWorkerTier
+
+configure instance >configuration> instances>root volume: 3
+--create jar file?>maven>lifecycle>package>double click> u wil find in target!
+
+for sql
+-edit Configure networking and database in configuration> select all databases and select sql and apply
+
+...............24/10/24..............
+...........RDS........
+create database> for example postgres select from teir>create password>click create database
+
+Endpoint
+mypostgres-db.cxsuu4ms2bti.us-east-1.rds.amazonaws.com
+Port
+5432
+
+
+-sirs:
+sqlserver.chi1f0ts88ht.us-east-1.rds.amazonaws.com
+username
+sa
+password
+sqlserver123
+
+mqsql123
+root
+
+...........25/10/24......................
+......CICD........
+Continous Integration continuous deployment
+Ex: jenkins,AWS codepipeline
+-Pipeline: Source code repo -> AWS codepipeline pulls code -> AWS codebuild will build and test code -> AWS Code Deploy will Deploy to Elastic Beanstalk 
+-in cicd once u push code to git repo all these steps will be performed automatically
+--Initial steps: create new GitHub repository-> go and create springboot proj using spring web dependency-> create buildspec.yml and write in it with jar file ->commit and push-> deploy jar file in the environment created by elastic beanstalk
+-cicd: browse pipeline
+-->Steps:
+1.create pipeline with custom->give pipeline name->next
+2.version 2->click on "connect to github"->create GitHub app connection-> install new app->access to all repositories->come back->
+3. click for created connection->main branch->trigger:no filter,push,branch
+4. build providers-> other->aws codebuild-> create a new project-=(give proj name->new service role only->use buildspec->no logs required)->single build->deploy in elastic beanstalk->application name ->mention env name 
+5.next
+6.next->create pipeline
+--it will pull->build->deploy
+
+..................26/10/24..................
+........S3........
+--simple storage like google drive
+--Steps:
+->when u open S3 u will get create a bucket->general purpose->give name->keep as it is->create bucket
+--here u can upload files and use furtherly(upload jar file required for ec2 deployment...copy object url and use it in ec2 instance)
+--in s3 u can host a frontend website also
+-go to ur frontend proj-> type ng serve ->ng build for angular (u will get files which needs to be hosted)->upload these files in bucket
+-bucket props->enable static->build static  && bucket policy->copy the req policy with ur bucket name......u will get a static link use it!
+-bucket policy:
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::Bucket-Name/*"
+            ]
+        }
+    ]
+}
+........SNS.......
+Simple Notification Service
+Publisher<->SNS<->Subscriber
+........SQS........
+-maintained in a queue not immediately
+Simple Queued Service
+go to sqs->queue->enable->create queue
+
+
+
+
+.................8/11/24...........
+MICROSERVICES
+
+CLOUD NATIVE APPLICATION ARCHITECTURE
+-12 FACTOR APP
+
+1. MICRO SERVICES
+
+SALES@high load: create MS
+Vertical scaling: powerful machine ,costly ,not flexible
+Horizontal scaling: creating many instances ,not much cost effective(here everyone doesn't buy...so less required)
+therefore divide into MS  
+PROS: scalable, availability, cost effective ,easy debug and test and deploy, different technologies 
+CONS: needs additional training and learning, latency, configuration for different techs, making architecture fault-tolerant(when ordering with order MS if product MS is slow then product price wont be fetched and cannot proceed)
+IMPLEMENTATION/CREATION:
+create 3 spring boot projs with extra eureka discovery client dependency
+-open these 3 in a folder with vs code and comment out eureka dependency for now!
+-fix ports 
+-creating multiple instances:edit env variables with server.port:8101(anything)
+
+--Service Registration
+-all calls should go through service registry(which saves all ports of Services)...create new spring boot proj with only dependency eureka sever
+-open it and add server.port:8761 and @EnableEurekaServer in main
+-@EnableDiscoveryClient in portfolio main and uncomment prev dependency of eureka...now u will see instances
+
+--Service Discovery
+ @LoadBalanced in config of portfolio
+replace "http://STOCK-EX/stocks/" in portfolioservice which u got from eureka
+
+***for proj
+@Bean("basic") 
+     and 
+@LoadBalanced
+@Bean
+@Primary
+    and
+@Autowired
+@Qualifier("basic")
+private RestTemplate basicRT; ***
+
+--Load Balancing
+
+.............9/11/24..........
+**Frontend communication**
+--API GATEWAY(routing info)
+-all calls from clients come to api gateway which talks to eureka server and analyzes port
+-create spring proj with reactive gateway and eureka discovery client dependencies
+-add @EnableDiscoveryClient and server.port anything
+
+...........11/11/24................
+--CIRCUIT BREAKER
+1.add resillient4j and actuator dependencies in portfolio pom xml
+2. implement fallback method in portfolio service
+ public double fetchTotalValueFallBack(Portfolio portfolio,Exception ex)
+    {
+        log.error(ex.getMessage());
+       
+        return 0;
+
+    }
+@CircuitBreaker(fallbackMethod = "fetchTotalValueFallBack",name = "stock-cb")
+
+3. change application.yml
+use above name(stock-cb) in application.yml ->resilliance->instances->name
+
+4.run eureka->portfolio->stock->mutual fund..u will get output,now stop stock service and check for localhost:8000/portfolio/gvr u will get whitelabel error, refresh it for many times and see the difference
+
+
+
+..........12/11/24........
+--for all list of stocks
+create controller in stocks for .findAllById() with dto record List<Integer>ids and use it in controller post mapping
+--now use this above controller method and replace it with the api used before(before if 1 fails all others will also effected,but now through this method
+u will call all ids at a time)
+
+--CLOUD CONFIG
+--DISTRIBUTED SERVICE
+
+--TASK: change rest template to feign client!
+https://medium.com/@AlexanderObregon/navigating-client-server-communication-with-springs-feignclient-annotation-70376157cefd
+steps
+1.add  “Spring Cloud OpenFeign.” dependency
+2. add @EnableFeignClients in main
+3. autowire feignfile
+4.for (int stockId : portfolio.getStocks()) {
+            Stock stock = feignFile.getStocksById(stockId);
+            totalValue += stock.getPrice();
+        }
+
+......13/11/24...........
+
+--ZIPKIN download
+-java -jar ./Downloads/zipkin-server-3.4.2-exec.jar
+-type zipkin in dependency and add them(-zipkin reporter brave, -micrometer -tracing-bridge-brave)
+-run in 9411->run query->u will get timings
+
+--------DOCKER------
+-no matter the application.props(crediantials,java installations) it should run
+-so container contains jar file,java application needed installations(OS doesn't require installations)
+Components:
+client              docker engine           docker registry(like GitHub)
+ -u will write
+ commands here        -images(when u run image gives u container)
+                      -container
+
+
+.......in VM......
+
+for getting images
+-docker images
+
+-docker pull mysql
+
+for running mysql
+delete it first
+docker rm mysql-container
+docker run -p 3309:3306 -e MYSQL_ROOT_PASSWORD=password --name mysql-container -d  mysql
+
+
+docker pull ram1uj/easy-recipes
+docker run -p 3000:80 --name easy-recipes  ram1uj/easy-recipes
+
+-d for detaching
+
+
+for getting all containers
+docker ps -a
+
+for deleting.first stop 
+docker stop containername
+docker rm containername
+
+***u want a new proj to be on docker**
+1.create a  spring boot proj
+2.generate jar file->maven->lifecycle->package
+3.create dockerfile with below code
+FROM openjdk:21-jdk-slim
+WORKDIR /
+ADD target/spring-boot-app.jar app.jar
+CMD java -jar app.jar
+4.make sure in pom xml 
+<finalName>spring-boot-app</finalName>
+5.in terminal type below commands
+docker build -t spring-boot-app .
+docker run -p 8900:8080 --name spring-boot-app -d spring-boot-app
+6. check localhost:8900 to see ur beautiful proj
+****
+
+***pushing ur proj into docker hub(first create account)***
+docker login
+enter username password
+docker tag spring-boot-app username/spring-boot-
+docker images  (check changes)
+docker push username/spring-boot-app
+after pushing check in docker hub,u will find it ! wohoooo congosss
+****
+
+..................14/11/24................
+****Included postgres with network***
+--docker file
+FROM openjdk:21-jdk-slim
+WORKDIR /
+ADD target/*.jar app.jar
+CMD ["java", "-jar", "app.jar"]
+
+--applcayion.yml
+spring:
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB_NAME:postgres}
+    username: ${POSTGRES_USERNAME:postgres}
+    password: ${POSTGRES_PASSWORD:pass@word1}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port:
+    8080
+
+steps:
+1.docker network create spring-boot-db-network //create network
+2.docker run --name postgres -e POSTGRES_PASSWORD=pass@word1 -e POSTGRES_DB=ust_db --network=spring-boot-db-network -d -p 5430:5432 postgres
+3.docker run -p 8200:8080 --name=docker-postgres --network=spring-boot-db-network -e POSTGRES_HOSTNAME=postgres -e POSTGRES_PORT:5432 -e POSTGRES_DB_NAME:ust_db -e POSTGRES_USERNAME:postgres -e POSTGRES_PASSWORD:pass@word1 -d docker-postgres
+
+.....15/11/24.......
+Created for microservices
+1.generate jar file, build it using build command(need to write dockerfile for all microservices,update application.yml in all and compose file which includes all microservices details)
+2.docker compose config
+3.docker compose up
+4.docker compose down for terminating
+
+
+............18/11/24........
+
+--ECS(elastic container service) in AWS
+--KUBERNETES
+->open-source platform for automating the deployment
+->POD:deployable unit, inside which container runs
+->NODE is a server inside which PODs will run
+->creates 
+-1.Deployment:which contains all tasks,
+-2.Service will provide IP address
+-3.Ingress:connecting ur website name to Kubernetes
+-4.Secrets:private info is stored here
+-5.ConfigMap:All configuations will be stored here
+->Components:
+1.Cluster: has 2 types of nodes
+            1. master node(control panel) 2.worker node
+            -kuberlet:ensures correct run configurations
+
+-----VM----
+Installation of minikube
+
+minikube start
+kubectl create deployment myfirst --image=ram1uj/easy-recipes
+kubectl expose deployment myfirst --type=NodePort --porort=80
+minikube service myfirst 
+--it will open website
+
+for replicas 
+kubectl delete easy-recipes
+kubectl delete svc easy-recipes
+kubectl create deployment myfirst --image=ram1uj/easy-recipes
+kubectl expose deployment myfirst --type=NodePort --porort=80
+kubectl scale deployment myfirst --replicas=3
+->change to different image
+kubectl set image deployment easy-recipes easy-recipes=ram1uj/covid-info  
+kubectl service myfirst
+
+
+.............19/11/24............
+..SPRING SECURITY..
+--rather than basic auth every time passing credentials
+--but now only at the login time u will give crediantials, it will generate a token. now this token will be used along with request
+--JWT:JSON Web Token used for Authorization
+ -Header
+ -Payload: Registered claims, user details not password
+ -Signature: Header+payload
+
+Login
+1.Authenication
+2.Generate JWT
+
+--/hello(request)+token(header)
+
+--filter/interceptor: to fetch the token
+--from token u will get user details
+
+implementation
+--jjwt Jackson,jjwt impl,jjwt 
+
+use postman, generate tokens,then get username from it and validate
+bearer auth for posting token
+Spring only knows UserDetails so develop it!
+in securityconfig file:.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
+
+-in authservice
+//1.take crediantials, check if user is present from repo(not from userdetailsserviceimpl it is for spring security),
+//    2. check whether password is matching or not
+//    3. if all fine generate token
+
+............20/11/24.........
+
+Authorization 2.0 how?
+-Sign in with facebook
+-Sign in with GitHDAub
+
+F
+.....ANGULAR......
+
+Data Binding 
+-Property Binding
+-String INterpolation
+-Event Bindig
+-Two-way Binding
+
+Directives
+-*ngFor/@for
+-*ngIf/@if
+-ngClass,ngStyle
+
+Forms
+-template driven
+-reactive
+
+Services and dependencies
+-router
+-pipes
+-HTTPClient
+
+
+for creating new angular proj
+-nodevars
+-ng new todo-app-angular
+-ng serve //for running
+
+Structure:
+app 
+ header
+ main
+    add-todos
+    view-todos
+ footer
+
+TEMPLATE DRIVEN:
+
+In command Prompt::
+ng g c header...
+
+for view-todos(we need print all todos function to be here from add-todos component), we need to create service 
+Services:
+-Only logic no view 
+class TodoDataService {} write code inside this
+
+.................21/11/24................
+
+REACTIVE MODEL
+
+-import ReactiveFormsModule
+for connecting with frontend:
+-write crossorigin(origins=")
+ng g s todo-api// new service for http 
+constructor(private todoClient:HttpClient) { }
+ createTodo(todo:Todo):Observable<Todo>// it will return observale from rsjx
+post<Todo>(this.baseUrl,todo)// autowire it ND PASS two arguments
+
+-change this in app.config.ts
+import { HttpClient, provideHttpClient } from '@angular/common/http';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),provideHttpClient()]
+};
+
+
+
+........22/11/24...
+ROUTING
+--inside app.routes.ts
+-add components:
+export const routes: Routes = [
+    {path:'add',component:AddTodosComponent},
+    {path:'view-all' ,component:ViewTodosComponent}
+];
+
+--import routerModule in main.ts and write below code in main.html
+<div class="row">
+      <div class="col-12">
+          <router-outlet></router-outlet>
+      </div>
+  </div>
+
+--import routerModule in header.ts and write  routerLink ="add">Add in place of "href=#"
+
+--if u wantto redirect to view-todos page by clicking add, write below
+add this.router.navigate(['view-all']) in add function with private router Router imported and in constructor
+
+--
+
+<!-- <div class="row">
+    <!-- Add Todo Component -->
+    <div class="col-12 col-md-6 mb-4">
+      <div class="card p-3">
+        <h4 class="card-title text-center">Add Todo</h4>
+        <app-add-todos-reactive></app-add-todos-reactive>
+      </div>
+    </div>
+  
+    <!-- View Todos Component -->
+    <div class="col-12 col-md-6 mb-4">
+      <div class="card p-3">
+        <h4 class="card-title text-center">View Todos</h4>
+        <app-view-todos></app-view-todos>
+      </div>
+    </div>
+  </div> -->
+
+
+.......25/11/24................
+SECURITY 2.0
+only securityconfig changes,check SprinSecurity Projs for detailed
+
+............26/11/24....................
+ANGULAR!!
+--Child Route(if u want to be displayed on same route page!) 
+change app.routes and card remove{/view}
+
+--Guards
+create:ng g g my-route
+change app.routes
+and  
+const check=sessionStorage.getItem('isloggedin')
+ return check!=null
+
+--change error page dynamically...
+1.if backend is not running,it should display
+@display
+.pipe(
+      catchError(
+        err=>
+        {
+          console.log(err)
+          this.router.navigate(['/error'])
+          return throwError(()=>err)
+        }
+        
+      )
+      
+      )
+OR
+we can write a model and write all those exceptions in it and error-handler service to show up data
+and in backend restcontrolleradvice so that we get proper error response and sync up in both frontend and backend
+--in errorPage.html
+h1>Error:{{errorHandler.errorResponse?.status}}</h1>
+		<h2>{{errorHandler.errorResponse?.message}}</h2>
+
+
+......27/11/24.............
+PIPES:
+-for transforming some feature
+-todo?.status|lowercase(will return lowercase status)
+-custom pipe
+ng g p shorten
+
+--connecting security to frontend(login page)
+-save data in session storage and every time add it as header
+-add interceptor like filter, check whether token is present 
+--check angular-auth-app
+
+...........28/11/24...........
+--login page modification,check angular-auth-app
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--duplicateException 409
+--see bookstore aplicn for that
+
+-see validations
+-see mapping
+--see @query
+
+@jsonformat(pattern="dd/MMM/yyyy")
+
+
+-for ssl error: git config --global http.sslVerify false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html
+
+-<hr/> for horizontal line in between 2 paras
+<be/> for breaking in between
+<ol> or<ul> use <li> for adding list items
+<a href="link">Name</a>
+<img src="link" alt="not found">
+
+
+
+inline css:
+<tag style="css"/>
+<h1 style="color:blue;">Style Me in Blue!</h1>
+
+internal 
+<style>css</style>
+<style>
+    h1
+    {
+    color:red;
+    }
+  </style>
+
+external
+<link href="styles/css">
+<link rel="stylesheet" href="./style.css" />
+
+
+.for class
+# for id
+html-element[attritube] p[draggable="true"]
+{code}
+*{code} for all
+
+em is relative to within folder whereas rem is relative completely to root i.e html 
+
+font-weight,font-size,text-allign
+
+border:10px solid/dashed black
+border-width: - - - - clock wise direction
+text-transform:uppercase
+
+type:ext<internal<inline
+position: with down or last it will be updated
+specificity: element<class<attritubute<id
+
+1.h1,h2{css}
+2.selector>selector{css}
+parent    immediate child  ex: .box>p{css}
+3. .box p{css}
+for all descsendants
+4.chaining
+h1#id.class{css} or div h1#id.class{css}
+
+
+positions
+1.static:default
+2.relative:relative to static box
+3.absolute:position relative to nearest ancestor(if its made to be as relative) or then left top corner
+4.fixed:even if u scroll it will be same with left top corner
+z-index:1 means top
+
+display:block/inline-block/inline
+float:left/right if u want image on left followed with a para
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
